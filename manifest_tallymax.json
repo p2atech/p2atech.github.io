@@ -1,6 +1,6 @@
 {
-  "name": "TallyMax",
-  "version": "2025-01-23",
+  "name": "TallyMax for the OSEE Gostream",
+  "version": "2025-01-24",
   "home_assistant_domain": "none",
   "funding_url": "https://esphome.io/guides/supporters.html",
   "builds": [

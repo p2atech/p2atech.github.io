@@ -1,5 +1,5 @@
-# Squeezelite-ESP32 Installer
+# TallyMax the Firmware updater
 
-This is a demo installer website for [Squeezelite-ESP32](https://github.com/sle118/squeezelite-esp32).
+This is the website to update your TallyMax or flash it to TallyMini
 
-[Visit installer website](https://paulusschoutsen.nl/squeezelite-esp32-install/)
+Brought to you by the great ESP Web Tools https://esphome.github.io/esp-web-tools/ .

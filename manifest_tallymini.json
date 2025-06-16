@@ -1,6 +1,6 @@
 {
   "name": "TallyMini for the ATEM",
-  "version": "2025-05-13",
+  "version": "2025-06-16",
   "home_assistant_domain": "none",
   "funding_url": "https://esphome.io/guides/supporters.html",
   "builds": [

@@ -2,12 +2,12 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>TallyMax/TallyMini Installer</title>
+    <title>TallyMax/TallyMini Firmware Updater</title>
     <meta
       name="description"
       content="Easily allow users to install TallyMax or TallyMini firmware on the web."
     />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="dark light" />
     <style>
       body {
@@ -15,21 +15,42 @@
           Roboto, Ubuntu, sans-serif;
         padding: 0;
         margin: 0;
-        line-height: 1.4;
+        line-height: 1.6;
+        background-color: #f4f7f6;
+        color: #333;
       }
       .content {
-        max-width: 600px;
-        margin: 0 auto;
-        padding: 12px;
+        max-width: 700px;
+        margin: 30px auto;
+        padding: 25px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        text-align: center;
+        color: #0056b3;
+        margin-bottom: 25px;
+        font-size: 2.2em;
       }
       h2 {
-        margin-top: 2em;
+        margin-top: 2.5em;
+        color: #0056b3;
       }
       h3 {
-        margin-top: 1.5em;
+        margin-top: 1.8em;
+        color: #0056b3;
+      }
+      p {
+        margin-bottom: 15px;
       }
       a {
         color: #03a9f4;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+      a:hover {
+        color: #007bb5;
       }
       .invisible {
         visibility: hidden;
@@ -43,12 +64,16 @@
       .content pre {
         max-width: 100%;
         overflow-y: scroll;
+        background-color: #eef2f5;
+        padding: 15px;
+        border-radius: 5px;
       }
       .footer {
-        margin-top: 24px;
-        border-top: 1px solid #ccc;
-        padding-top: 24px;
+        margin-top: 40px;
+        border-top: 1px solid #eee;
+        padding-top: 25px;
         text-align: center;
+        color: #777;
       }
       .footer .initiative {
         font-style: italic;
@@ -56,58 +81,169 @@
       }
       table {
         border-spacing: 0;
+        width: 100%;
+        margin-top: 20px;
       }
       td {
-        padding: 8px;
-        border-bottom: 1px solid #ccc;
+        padding: 10px;
+        border-bottom: 1px solid #eee;
       }
       .radios li {
         list-style: none;
-        line-height: 2em;
+        line-height: 2.5em;
+        margin-bottom: 10px;
       }
+      .radios label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-size: 1.1em;
+      }
+      .radios input[type="radio"] {
+        margin-right: 10px;
+        transform: scale(1.2);
+      }
+      .button-row {
+        margin-top: 30px;
+      }
+      .user-manuals {
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+      }
+      .user-manuals h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .user-manuals ul {
+        list-style: none;
+        padding: 0;
+        text-align: center;
+      }
+      .user-manuals li {
+        margin-bottom: 10px;
+      }
+      .user-manuals a {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: #fff;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+      .user-manuals a:hover {
+        background-color: #218838;
+      }
+
       @media (prefers-color-scheme: dark) {
         body {
-          background-color: #333;
-          color: #fff;
+          background-color: #2c2c2c;
+          color: #e0e0e0;
+        }
+        .content {
+          background-color: #3a3a3a;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        h1,
+        h2,
+        h3 {
+          color: #90caf9;
         }
         a {
-          color: #58a6ff;
+          color: #64b5f6;
+        }
+        a:hover {
+          color: #42a5f5;
+        }
+        .content pre {
+          background-color: #4a4a4a;
+        }
+        .footer {
+          border-top: 1px solid #555;
+          color: #bbb;
+        }
+        td {
+          border-bottom: 1px solid #555;
+        }
+        .user-manuals a {
+          background-color: #388e3c;
+        }
+        .user-manuals a:hover {
+          background-color: #2e7d32;
         }
       }
     </style>
-    <script type="module" src="https://unpkg.com/esp-web-tools@10.1.0/dist/web/install-button.js?module"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/esp-web-tools@10.1.0/dist/web/install-button.js?module"
+    ></script>
   </head>
   <body>
     <div class="content">
       <h1>TallyMax/TallyMini Firmware Updater</h1>
-      <p>This will allow you to update your TallyMax/TallyMini to the latest firmware version.</p>
-      <p>Select your product</p>
+      <p>
+        This tool allows you to easily update your **TallyMax** or
+        **TallyMini** device to the latest firmware version.
+      </p>
+
+      <p>Please select your product below to begin:</p>
       <ul class="radios">
         <li>
-          <label><input type="radio" name="type" value="tallymax" /> TallyMax the Tally Light for the Osee GoStream and GoStream Duet</label>
+          <label
+            ><input type="radio" name="type" value="tallymax" />
+            <span
+              ><strong>TallyMax:</strong> The Tally Light designed for Osee
+              GoStream and GoStream Duet.</span
+            ></label
+          >
         </li>
         <li>
-          <label><input type="radio" name="type" value="tallymini" /> TallyMini the Tally Light for the Atem Mini, Pro or Iso</label>
+          <label
+            ><input type="radio" name="type" value="tallymini" />
+            <span
+              ><strong>TallyMini:</strong> The Tally Light compatible with Atem
+              Mini, Pro, or Iso devices.</span
+            ></label
+          >
         </li>
       </ul>
       <p class="button-row" align="center">
         <esp-web-install-button class="invisible"></esp-web-install-button>
       </p>
 
+      <div class="user-manuals">
+        <h2>User Manuals</h2>
+        <p>Need help? Download the user manual for your device:</p>
+        <ul>
+          <li>
+            <a href="docs/user manual tallymax.pdf" target="_blank"
+              >Download TallyMax User Manual</a
+            >
+          </li>
+          <li>
+            <a href="docs/user manual tallymini.pdf" target="_blank"
+              >Download TallyMini User Manual</a
+            >
+          </li>
+        </ul>
+      </div>
+
       <div class="footer">
-        <a href="https://p2atech.github.io"
-          >Tally</a
-        > &mdash;
-        Installer powered by <a href="https://esphome.github.io/esp-web-tools/">ESP Web Tools</a>.
+        <p>
+          <a href="https://p2atech.github.io">Tally</a> &mdash; Installer
+          powered by
+          <a href="https://esphome.github.io/esp-web-tools/">ESP Web Tools</a>.
+        </p>
+      </div>
     </div>
     <script>
-      document.querySelectorAll('input[name="type"]').forEach(radio =>
+      document.querySelectorAll('input[name="type"]').forEach((radio) =>
         radio.addEventListener("change", () => {
-          const button = document.querySelector('esp-web-install-button');
+          const button = document.querySelector("esp-web-install-button");
           button.manifest = `./manifest_${radio.value}.json`;
-          button.classList.remove('invisible');
-        }
-      ));
+          button.classList.remove("invisible");
+        })
+      );
     </script>
   </body>
 </html>
